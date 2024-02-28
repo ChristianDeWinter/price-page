@@ -4,12 +4,28 @@
     --yellow: #FFD700; /* Opulent gold */
     --light-color: #87CEEB; /* Elegant blue */
     --pink: #FF0000; /* Mystical red */
-    
 }
 
-.pricing-table-container {
+body {
+    background-color: #121212; /* Night black */
+    color: #fff; /* White text */
     font-family: "Poppins", sans-serif;
+    position: relative;
+    overflow-x: hidden; /* Prevent horizontal scrollbars */
 }
+
+.moon {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle at 50% 120%, #f7f7f7, #cccccc); /* Radial gradient for texture */
+    border-radius: 50%;
+    box-shadow: 0 0 30px 20px rgba(255, 255, 255, 0.5); /* Glow effect */
+    z-index: -1;
+}
+
 
 .pricing-table-container .pricing-header {
     display: flex;
@@ -39,14 +55,14 @@
     display: inline-block;
 }
 
-.pricing-table-container .plans-switch-container .monthly {
+.pricing-table-container .plans-switch-container .weekly {
     position: absolute;
     left: 36px;
     top: 18px;
     pointer-events: none;
 }
 
-.pricing-table-container .plans-switch-container .weekly {
+.pricing-table-container .plans-switch-container .monthly {
     position: absolute;
     right: 36px;
     top: 18px;
@@ -71,7 +87,6 @@
     width: 106px;
 }
 
-
 .pricing-table {
     display: flex;
     align-items: center;
@@ -79,18 +94,71 @@
     margin-top: 32px;
 }
 
-
 .pricing-table .table {
     background: var(--light-color);
     width: 260px;
     padding: 32px;
     position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 24px;
 }
 
-.pricing-table h3 {
-    font-size: 24px;
-    margin-top: 0;
-    margin-bottom: 0;
+.pricing-table .table:not(.best-value) {
+    transform: translateY(10px);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.pricing-table .table:not(.best-value):hover,
+.pricing-table .table.best-value:hover {
+    transform: translateY(0);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.pricing-table .table.best-value {
+    background: var(--dark-blue);
+    color: #fff;
+    width: 280px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.5s ease;
+}
+
+.pricing-table .table.best-value:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.3);
+    filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.8));
+}
+
+.pricing-table .table.best-value .value {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 8px;
+    border-radius: 24px 24px 0 0;
+    background: var(--pink);
+    font-weight: bold;
+}
+
+.pricing-table .table.best-value .content {
+    padding-top: 32px;
+}
+
+.pricing-table .table.best-value .price {
+    font-size: 68px;
+}
+
+.pricing-table .table.best-value a.btn {
+    background: var(--yellow);
+    color: #000;
+    transition: all 400ms;
+}
+
+.pricing-table .table.best-value a.btn:hover {
+    background: #ffe4a4;
+} 
+
+.pricing-table .table.best-value .description {
+    color: #eee;
 }
 
 .pricing-table .price-container {
@@ -143,60 +211,4 @@
 
 .pricing-table a.btn:hover {
     background: #022435;
-}
-
-
-.pricing-table .table img.table-bg {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-}
-
-.pricing-table .table .content {
-    z-index: 200;
-    position: relative;
-}
-
-
-.pricing-table .table.best-value {
-    background: var(--dark-blue);
-    color: #fff;
-    border-radius: 24px;
-    width: 280px;
-}
-
-.pricing-table .table.table.best-value .value {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    text-align: center;
-    padding: 8px;
-    border-radius: 24px 24px 0 0;
-    background: var(--pink);
-    font-weight: bold;
-}
-
-.pricing-table .table.table.best-value .content {
-    padding-top: 32px;
-}
-
-.pricing-table .table.table.best-value .price {
-    font-size: 68px;
-}
-
-.pricing-table .table.table.best-value a.btn {
-    background: var(--yellow);
-    color: #000;
-    transition: all 400ms;
-}
-
-.pricing-table .table.table.best-value a.btn:hover {
-    background: #ffe4a4;
-} 
-
-.pricing-table .table.best-value .description {
-    color: #eee;
 }
