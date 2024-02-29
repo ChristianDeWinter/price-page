@@ -1,65 +1,25 @@
 :root {
-    --purple: #6E3D8E; /* Purple */
-    --white: #FFFFFF; /* White */
-    --dark-blue: #070D21; /* Dark Blue */
-    --red: #CD2027; /* Red */
+    --dark-blue: #4B0082; /* Deep, mysterious purple */
+    --green: #000000; /* Enigmatic black */
+    --yellow: #FFD700; /* Opulent gold */
+    --light-color: #87CEEB; /* Elegant blue */
+    --pink: #FF0000; /* Mystical red */
 }
 
 body {
-    background-color: var(--dark-blue); /* Night black */
-    color: var(--white); /* White text */
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-image: url('img/tree.jpg'); /* Replace 'your-image.jpg' with the path to your background image */
+    background-size: cover; /* Adjust the background size to cover the entire viewport */
+    background-repeat: no-repeat;
+    background-position: center; 
+    color: #fff; /* White text */
     font-family: "Poppins", sans-serif;
     position: relative;
-    overflow-x: hidden; /* Prevent horizontal scrollbars */
+    overflow-x: hidden; 
 }
 
-.moon {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    width: 100px;
-    height: 100px;
-    background-image: url('moon2.png'); /* Specify the path to your moon image */
-    background-size: cover;
-    background-repeat: no-repeat;
-    border-radius: 50%;
-    box-shadow: 0 0 30px 20px rgba(255, 255, 255, 0.5); /* Glow effect */
-    z-index: -1;
-}
-
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: var(--dark-blue); /* Adjust the background color as needed */
-    z-index: 1000; /* Ensure the navbar stays on top */
-}
-
-.logo img {
-    height: 40px; /* Adjust the height of the logo as needed */
-    width: auto; /* Ensure the logo's width adjusts proportionally */
-}
-
-.nav-links {
-    display: flex;
-}
-
-.nav-links a {
-    color: var(--purple); /* Purple */
-    text-decoration: none;
-    margin-left: 20px; /* Adjust the spacing between navigation links */
-    font-size: 18px;
-    transition: color 0.3s ease;
-}
-
-.nav-links a:hover {
-    color: var(--red); /* Red */
-}
 
 .pricing-table-container {
     display: flex;
@@ -67,6 +27,8 @@ body {
     align-items: center;
     flex-direction: column;
     height: 100vh; /* Ensure the container takes the full height of the viewport */
+    position: relative; 
+    z-index: 2; /* Ensure the pricing table container is above the fog */
 }
 
 .pricing-header {
@@ -105,7 +67,7 @@ body {
 
 .table.best-value {
     background: var(--dark-blue);
-    color: var(--white);
+    color: #fff;
     width: 280px;
     transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.5s ease;
     border-radius: 24px;
@@ -139,7 +101,7 @@ body {
 
 .table.best-value a.btn {
     background: var(--yellow);
-    color: var(--dark-blue);
+    color: #000;
     transition: all 400ms;
 }
 
@@ -148,7 +110,7 @@ body {
 } 
 
 .table.best-value .description {
-    color: var(--white);
+    color: #eee;
 }
 
 .price-container {
@@ -164,7 +126,7 @@ body {
 
 .description {
     font-size: 15px;
-    color: var(--white);
+    color: #222;
 }
 
 .features {
@@ -189,7 +151,7 @@ a.btn {
     padding: 16px 0;
     display: inline-block;
     width: 100%;
-    color: var(--white);
+    color: #fff;
     font-size: 18px;
     font-weight: bold;
     text-align: center;
@@ -202,3 +164,55 @@ a.btn {
 a.btn:hover {
     background: #022435;
 }
+
+/* Fog Effect Styles */
+
+.fog {
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    z-index: 1; /* Set a lower z-index for the fog to keep it below the pricing table container */
+}
+
+.fog-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1; /* Ensure the fog is behind the pricing table container */
+}
+
+.fog-img {
+    position: absolute;
+    height: 100vh;
+    width: 300vw;
+    z-index: 2;
+}
+
+.fog-img-first {
+    background: url('img/fog-1.png'); /* Specify the path to your fog image */
+    background-repeat: repeat-x;
+    background-size: contain;
+    background-position: center;
+    animation: marquee 60s linear infinite;
+}
+
+.fog-img-second {
+    background: url('img/fog-2.png'); /* Specify the path to your fog image */
+    background-repeat: repeat-x;
+    background-size: contain;
+    background-position: center;
+    animation: marquee 30s linear infinite;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    100% {
+        transform: translate3d(-200vw, 0, 0);
+    }
+}
+
