@@ -1,14 +1,13 @@
 :root {
-    --dark-blue: #4B0082; /* Deep, mysterious purple */
-    --green: #000000; /* Enigmatic black */
-    --yellow: #FFD700; /* Opulent gold */
-    --light-color: #87CEEB; /* Elegant blue */
-    --pink: #FF0000; /* Mystical red */
+    --purple: #6E3D8E; /* Purple */
+    --white: #FFFFFF; /* White */
+    --dark-blue: #070D21; /* Dark Blue */
+    --red: #CD2027; /* Red */
 }
 
 body {
-    background-color: #121212; /* Night black */
-    color: #fff; /* White text */
+    background-color: var(--dark-blue); /* Night black */
+    color: var(--white); /* White text */
     font-family: "Poppins", sans-serif;
     position: relative;
     overflow-x: hidden; /* Prevent horizontal scrollbars */
@@ -20,114 +19,105 @@ body {
     left: 20px;
     width: 100px;
     height: 100px;
-    background: radial-gradient(circle at 50% 120%, #f7f7f7, #cccccc); /* Radial gradient for texture */
+    background-image: url('moon2.png'); /* Specify the path to your moon image */
+    background-size: cover;
+    background-repeat: no-repeat;
     border-radius: 50%;
     box-shadow: 0 0 30px 20px rgba(255, 255, 255, 0.5); /* Glow effect */
     z-index: -1;
 }
 
-
-.pricing-table-container .pricing-header {
+.navbar {
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    padding: 20px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--dark-blue); /* Adjust the background color as needed */
+    z-index: 1000; /* Ensure the navbar stays on top */
+}
+
+.logo img {
+    height: 40px; /* Adjust the height of the logo as needed */
+    width: auto; /* Ensure the logo's width adjusts proportionally */
+}
+
+.nav-links {
+    display: flex;
+}
+
+.nav-links a {
+    color: var(--purple); /* Purple */
+    text-decoration: none;
+    margin-left: 20px; /* Adjust the spacing between navigation links */
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--red); /* Red */
+}
+
+.pricing-table-container {
+    display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh; /* Ensure the container takes the full height of the viewport */
 }
 
-.pricing-table-container h2 {
-    margin-right: 32px;
-    font-size: 24px;
-}
-
-.pricing-table-container .plans-switch {
-    width: 250px;
-    background: var(--dark-blue);
-    height: 55px;
-    appearance: none;
-    border-radius: 24px;
-    outline: none;
-    cursor: pointer;
-    position: relative;
-}
-
-.pricing-table-container .plans-switch-container {
-    position: relative;
-    color: #fff;
-    display: inline-block;
-}
-
-.pricing-table-container .plans-switch-container .weekly {
-    position: absolute;
-    left: 36px;
-    top: 18px;
-    pointer-events: none;
-}
-
-.pricing-table-container .plans-switch-container .monthly {
-    position: absolute;
-    right: 36px;
-    top: 18px;
-    pointer-events: none;
-}
-
-.pricing-table-container .plans-switch::before {
-    content: "";
-    position: absolute;
-    height: 44px;
-    width: 120px;
-    border-radius: 24px;
-    background: var(--green);
-    top: 50%;
-    transform: translateY(-50%);
-    left: 6px;
-    transition: all 0.5s;
-}
-
-.pricing-table-container .plans-switch:checked::before {
-    left: 138px;
-    width: 106px;
+.pricing-header {
+    text-align: center;
+    margin-bottom: 32px;
 }
 
 .pricing-table {
     display: flex;
-    align-items: center;
     justify-content: center;
-    margin-top: 32px;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
 }
 
-.pricing-table .table {
+.table {
     background: var(--light-color);
     width: 260px;
     padding: 32px;
     position: relative;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-radius: 24px;
+    margin: 20px;
 }
 
-.pricing-table .table:not(.best-value) {
+.table:not(.best-value) {
     transform: translateY(10px);
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.pricing-table .table:not(.best-value):hover,
-.pricing-table .table.best-value:hover {
+.table:not(.best-value):hover,
+.table.best-value:hover {
     transform: translateY(0);
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-.pricing-table .table.best-value {
+.table.best-value {
     background: var(--dark-blue);
-    color: #fff;
+    color: var(--white);
     width: 280px;
     transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.5s ease;
+    border-radius: 24px;
 }
 
-.pricing-table .table.best-value:hover {
+.table.best-value:hover {
     transform: translateY(-5px);
     box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.3);
     filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.8));
 }
 
-.pricing-table .table.best-value .value {
+.table.best-value .value {
     position: absolute;
     top: 0;
     left: 0;
@@ -139,67 +129,67 @@ body {
     font-weight: bold;
 }
 
-.pricing-table .table.best-value .content {
+.table.best-value .content {
     padding-top: 32px;
 }
 
-.pricing-table .table.best-value .price {
+.table.best-value .price {
     font-size: 68px;
 }
 
-.pricing-table .table.best-value a.btn {
+.table.best-value a.btn {
     background: var(--yellow);
-    color: #000;
+    color: var(--dark-blue);
     transition: all 400ms;
 }
 
-.pricing-table .table.best-value a.btn:hover {
+.table.best-value a.btn:hover {
     background: #ffe4a4;
 } 
 
-.pricing-table .table.best-value .description {
-    color: #eee;
+.table.best-value .description {
+    color: var(--white);
 }
 
-.pricing-table .price-container {
+.price-container {
     display: flex;
     align-items: center;
 }
 
-.pricing-table .price-container .price {
+.price-container .price {
     font-size: 56px;
     font-weight: bold;
     padding-right: 16px;
 }
 
-.pricing-table .description {
+.description {
     font-size: 15px;
-    color: #222;
+    color: var(--white);
 }
 
-.pricing-table .features {
+.features {
     list-style: none;
     padding: 0;
 }
 
-.pricing-table .features li {
+.features li {
     margin: 24px 0;
     display: flex;
     align-items: center;
 }
 
-.pricing-table .features li::before {
+.features li::before {
     content: url('images/check-icon.svg');
     margin-right: 16px;
     margin-top: 4px;
 }
 
-.pricing-table a.btn {
+a.btn {
     background: var(--dark-blue);
     padding: 16px 0;
     display: inline-block;
     width: 100%;
-    color: #fff;
+    color: var(--white);
     font-size: 18px;
     font-weight: bold;
     text-align: center;
@@ -209,6 +199,6 @@ body {
     transition: all 400ms;
 }
 
-.pricing-table a.btn:hover {
+a.btn:hover {
     background: #022435;
 }
